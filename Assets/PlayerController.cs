@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,17 +7,17 @@ public class PlayerController : MonoBehaviour
     public float Speed = 10f;
     private Vector2 _velocity;
     public float JumpHeight = 5f;
-    private float GroundDistance = 1.05f;
+    private float GroundDistance = 1.1f;
     private bool _isGrounded = false;
     public float GravityMultiplier = 1.5f;
 
     private Transform _groundcheck;
     public LayerMask Ground;
 
-    
+
     void Start()
     {
-        _characterController= GetComponent<CharacterController>();
+        _characterController = GetComponent<CharacterController>();
         _groundcheck = GetComponentInChildren<Transform>();
     }
 
@@ -38,6 +36,8 @@ public class PlayerController : MonoBehaviour
         {
             _velocity.y = 0f;
         }
+
+        //print(_isGrounded); was for testing the broken groundcheck variable
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
