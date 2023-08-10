@@ -12,20 +12,21 @@ public class PlayerController : MonoBehaviour
     public float GravityMultiplier = 1.5f;
     public float SprintSpeed = 10f;
 
-    private Transform _groundcheck;
+    private Transform _checkerTransform;
     public LayerMask Ground;
+    public LayerMask Wall;
 
 
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _groundcheck = GetComponentInChildren<Transform>();
+        _checkerTransform = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _isGrounded = Physics.CheckSphere(_groundcheck.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
+        _isGrounded = Physics.CheckSphere(_checkerTransform.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), 0);
         _characterController.Move(Speed * Time.deltaTime * move);
 
