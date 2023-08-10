@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float GroundDistance = 1.1f;
     private bool _isGrounded = false;
     public float GravityMultiplier = 1.5f;
+    public float SprintSpeed = 10f;
 
     private Transform _groundcheck;
     public LayerMask Ground;
@@ -37,6 +38,13 @@ public class PlayerController : MonoBehaviour
             _velocity.y = 0f;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _isGrounded) {
+            _velocity.x = move.x * SprintSpeed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            _velocity.x = 0f;
+        }
         //print(_isGrounded); was for testing the broken groundcheck variable
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
