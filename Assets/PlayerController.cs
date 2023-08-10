@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             _velocity.y = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _isGrounded) {
+        if (Input.GetKey(KeyCode.LeftShift) && _isGrounded) {
             _velocity.x = move.x * SprintSpeed;
         }
 
